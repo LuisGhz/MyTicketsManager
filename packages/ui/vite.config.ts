@@ -7,6 +7,7 @@ import { defineConfig } from "vite";
 export default defineConfig({
   plugins: [
     react(),
-    babel({ presets: [reactCompilerPreset(), tailwindcss()] }),
+    babel({ presets: [reactCompilerPreset()] }),
+    tailwindcss(),
   ],
 });

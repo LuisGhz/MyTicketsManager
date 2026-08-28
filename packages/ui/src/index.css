@@ -3,6 +3,7 @@
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/roboto";
 
+/* Add @source to load this styles from apps */
 @source "./";
 
 @custom-variant dark (&:is(.dark *));

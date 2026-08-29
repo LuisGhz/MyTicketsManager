@@ -10,6 +10,32 @@
         "turbo": "^2.10.12",
       },
     },
+    "apps/agent-dashboard": {
+      "name": "agent-dashboard",
+      "version": "0.0.0",
+      "dependencies": {
+        "react": "^19.2.8",
+        "react-dom": "^19.2.8",
+      },
+      "devDependencies": {
+        "@babel/core": "^7.29.7",
+        "@eslint/js": "^10.0.1",
+        "@rolldown/plugin-babel": "^0.2.3",
+        "@types/babel__core": "^7.20.5",
+        "@types/node": "^24.13.3",
+        "@types/react": "^19.2.18",
+        "@types/react-dom": "^19.2.4",
+        "@vitejs/plugin-react": "^6.1.0",
+        "babel-plugin-react-compiler": "^1.0.0",
+        "eslint": "^10.9.0",
+        "eslint-plugin-react-hooks": "^7.1.1",
+        "eslint-plugin-react-refresh": "^0.5.4",
+        "globals": "^17.11.0",
+        "typescript": "~6.0.2",
+        "typescript-eslint": "^8.67.0",
+        "vite": "^8.2.2",
+      },
+    },
     "apps/shell": {
       "name": "@myticketsmanager/shell",
       "version": "0.0.0",
@@ -23,7 +49,7 @@
       "devDependencies": {
         "@babel/core": "^7.29.7",
         "@myticketsmanager/eslint-config": "workspace:*",
-        "@repo/typescript-config": "workspace:*",
+        "@myticketsmanager/typescript-config": "workspace:*",
         "@rolldown/plugin-babel": "^0.2.3",
         "@types/babel__core": "^7.20.5",
         "@types/node": "^24.13.3",
@@ -52,7 +78,7 @@
       },
     },
     "packages/typescript-config": {
-      "name": "@repo/typescript-config",
+      "name": "@myticketsmanager/typescript-config",
       "version": "0.0.0",
     },
     "packages/ui": {
@@ -74,7 +100,7 @@
       "devDependencies": {
         "@babel/core": "^7.29.7",
         "@myticketsmanager/eslint-config": "workspace:*",
-        "@repo/typescript-config": "workspace:*",
+        "@myticketsmanager/typescript-config": "workspace:*",
         "@rolldown/plugin-babel": "^0.2.3",
         "@types/babel__core": "^7.20.5",
         "@types/node": "^24.13.3",
@@ -210,6 +236,8 @@
 
     "@myticketsmanager/shell": ["@myticketsmanager/shell@workspace:apps/shell"],
 
+    "@myticketsmanager/typescript-config": ["@myticketsmanager/typescript-config@workspace:packages/typescript-config"],
+
     "@myticketsmanager/ui": ["@myticketsmanager/ui@workspace:packages/ui"],
 
     "@nodelib/fs.scandir": ["@nodelib/fs.scandir@2.1.5", "", { "dependencies": { "@nodelib/fs.stat": "2.0.5", "run-parallel": "^1.1.9" } }, "sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g=="],
@@ -221,8 +249,6 @@
     "@oxc-project/types": ["@oxc-project/types@0.147.0", "", {}, "sha512-IJ3s6ltHLp45S0bh7phkX+gJO7A1Wuz2EaqpAhb8WjqDwbzMiWKHhyyT42tskaWjEYXtHtVCPpnBJVT9+dcRLg=="],
 
     "@remixicon/react": ["@remixicon/react@4.9.0", "", { "peerDependencies": { "react": ">=18.2.0" } }, "sha512-5/jLDD4DtKxH2B4QVXTobvV1C2uL8ab9D5yAYNtFt+w80O0Ys1xFOrspqROL3fjrZi+7ElFUWE37hBfaAl6U+Q=="],
-
-    "@repo/typescript-config": ["@repo/typescript-config@workspace:packages/typescript-config"],
 
     "@rolldown/binding-android-arm-eabi": ["@rolldown/binding-android-arm-eabi@1.2.6", "", { "os": "android", "cpu": "arm" }, "sha512-b+jTcARdTiFLI6jB4a5XjTm0RWd6KcRfQj/I2356fxUZemiho9zQLxo0RtCuMDAyKcLo6cEltkgbQp6d1+sjjQ=="],
 
@@ -355,6 +381,8 @@
     "acorn": ["acorn@8.18.0", "", { "bin": { "acorn": "bin/acorn" } }, "sha512-lGq+9yr1/GuAWaVYIHRjvvySG5/4VfKIvC8EWxStPdcDh/Ka7FG3twP6v4d5BkravUilhIAsG4Qj83t02LWUPQ=="],
 
     "acorn-jsx": ["acorn-jsx@5.3.2", "", { "peerDependencies": { "acorn": "^6.0.0 || ^7.0.0 || ^8.0.0" } }, "sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ=="],
+
+    "agent-dashboard": ["agent-dashboard@workspace:apps/agent-dashboard"],
 
     "ajv": ["ajv@6.15.0", "", { "dependencies": { "fast-deep-equal": "^3.1.1", "fast-json-stable-stringify": "^2.0.0", "json-schema-traverse": "^0.4.1", "uri-js": "^4.2.2" } }, "sha512-fgFx7Hfoq60ytK2c7DhnF8jIvzYgOMxfugjLOSMHjLIPgenqa7S7oaagATUq99mV6IYvN2tRmC0wnTYX6iPbMw=="],
 

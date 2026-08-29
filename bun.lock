@@ -14,8 +14,13 @@
       "name": "agent-dashboard",
       "version": "0.0.0",
       "dependencies": {
+        "@myticketsmanager/eslint-config": "workspace:*",
+        "@myticketsmanager/typescript-config": "workspace:*",
+        "@myticketsmanager/ui": "workspace:*",
+        "@tailwindcss/vite": "^4.3.3",
         "react": "^19.2.8",
         "react-dom": "^19.2.8",
+        "tailwindcss": "^4.3.3",
       },
       "devDependencies": {
         "@babel/core": "^7.29.7",

@@ -27,6 +27,11 @@ export default createModuleFederationConfig({
       name: "agentDashboard",
       entry: "http://localhost:5174/remoteEntry.js",
     },
+    adminDashboard: {
+      type: "module",
+      name: "adminDashboard",
+      entry: "http://localhost:5175/remoteEntry.js",
+    },
   },
   shared: {
     react: {

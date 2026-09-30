@@ -5,6 +5,7 @@ import viteLogo from './assets/vite.svg'
 import './App.css'
 
 const AgentDashboard = lazy(() => import('agentDashboard/AgentDashboard'));
+const AdminDashboard = lazy(() => import('adminDashboard/AdminDashboard'));
 
 function App() {
   const [count, setCount] = useState(0)
@@ -21,6 +22,9 @@ function App() {
           <h1>Get started</h1>
           <Suspense fallback={<div>Loading Agent Dashboard...</div>}>
             <AgentDashboard />
+          </Suspense>
+          <Suspense fallback={<div>Loading Admin Dashboard...</div>}>
+            <AdminDashboard />
           </Suspense>
           <p>
             Edit <code>src/App.tsx</code> and save to test <code>HMR</code>

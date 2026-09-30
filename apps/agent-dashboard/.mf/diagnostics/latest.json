@@ -1,0 +1,10 @@
+{
+  "latestErrorEvent": {
+    "code": "TYPE-001",
+    "message": "Failed to generate type declaration. Execute the below cmd to reproduce and fix the error. #TYPE-001\nargs: {\"cmd\":\"C:\\\\Users\\\\Luisghtz\\\\AppData\\\\Local\\\\fnm_multishells\\\\25876_1787943910288\\\\node.exe C:\\\\Users\\\\Luisghtz\\\\dev\\\\turborepo\\\\myticketsmanager\\\\node_modules\\\\.bun\\\\typescript@6.0.3\\\\node_modules\\\\typescript\\\\bin\\\\tsc --project C:\\\\Users\\\\Luisghtz\\\\dev\\\\turborepo\\\\myticketsmanager\\\\apps\\\\agent-dashboard\\\\node_modules\\\\.federation\\\\tsconfig.19983e713b9f65931b523c88bb240e1a.json\"}\nView the docs to see how to solve: https://module-federation.io/guide/troubleshooting/type#type-001",
+    "args": {
+      "cmd": "C:\\Users\\Luisghtz\\AppData\\Local\\fnm_multishells\\25876_1787943910288\\node.exe C:\\Users\\Luisghtz\\dev\\turborepo\\myticketsmanager\\node_modules\\.bun\\typescript@6.0.3\\node_modules\\typescript\\bin\\tsc --project C:\\Users\\Luisghtz\\dev\\turborepo\\myticketsmanager\\apps\\agent-dashboard\\node_modules\\.federation\\tsconfig.19983e713b9f65931b523c88bb240e1a.json"
+    },
+    "timestamp": 1787977086431
+  }
+}

@@ -1,8 +1,10 @@
-import { useState } from 'react'
+import { useState, Suspense, lazy } from 'react'
 import heroImg from './assets/hero.png'
 import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import './App.css'
+
+const AgentDashboard = lazy(() => import('agentDashboard/AgentDashboard'));
 
 function App() {
   const [count, setCount] = useState(0)
@@ -17,6 +19,9 @@ function App() {
         </div>
         <div>
           <h1>Get started</h1>
+          <Suspense fallback={<div>Loading Agent Dashboard...</div>}>
+            <AgentDashboard />
+          </Suspense>
           <p>
             Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
           </p>

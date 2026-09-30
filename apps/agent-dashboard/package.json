@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@module-federation/vite": "^1.21.0",
     "@myticketsmanager/eslint-config": "workspace:*",
     "@myticketsmanager/typescript-config": "workspace:*",
     "@myticketsmanager/ui": "workspace:*",

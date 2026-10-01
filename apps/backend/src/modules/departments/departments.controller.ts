@@ -5,7 +5,6 @@ import { CreateDepartmentDto, UpdateDepartmentDto } from './dto/department.dto.j
 import { DepartmentsService } from './departments.service.js';
 
 @Controller('admin/departments')
-@Roles(Role.ADMIN)
 export class DepartmentsController {
   constructor(private readonly departments: DepartmentsService) {}
 
@@ -15,21 +14,25 @@ export class DepartmentsController {
   }
 
   @Get(':id')
+  @Roles(Role.ADMIN)
   findOne(@Param('id') id: string) {
     return this.departments.findOne(id);
   }
 
   @Post()
+  @Roles(Role.ADMIN)
   create(@Body() input: CreateDepartmentDto) {
     return this.departments.create(input);
   }
 
   @Put(':id')
+  @Roles(Role.ADMIN)
   update(@Param('id') id: string, @Body() input: UpdateDepartmentDto) {
     return this.departments.update(id, input);
   }
 
   @Delete(':id')
+  @Roles(Role.ADMIN)
   remove(@Param('id') id: string) {
     return this.departments.remove(id);
   }

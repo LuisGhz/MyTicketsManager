@@ -1,5 +1,9 @@
-function App() {
-  return <>Hello from Agent Dashboard!!!!</>;
+import { AgentDashboard } from "./components/AgentDashboard";
+
+export { AgentDashboard };
+
+export function AgentApp() {
+  return <AgentDashboard />;
 }
 
-export default App;
+export default AgentApp;

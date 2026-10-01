@@ -22,6 +22,10 @@ export default function createConfig(tsconfigRootDir: string) {
           tsconfigRootDir,
         },
       },
+      rules: {
+        'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+        'react-hooks/set-state-in-effect': 'warn',
+      },
     },
   ])
 }

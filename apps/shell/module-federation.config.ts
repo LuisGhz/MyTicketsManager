@@ -42,6 +42,18 @@ export default createModuleFederationConfig({
       singleton: true,
       requiredVersion: "^19.2.8",
     },
+    "react-router-dom": {
+      singleton: true,
+    },
+    zustand: {
+      singleton: true,
+    },
+    "@tanstack/react-query": {
+      singleton: true,
+    },
+    "@myticketsmanager/ui": {
+      singleton: true,
+    },
   },
   dts: false,
 });

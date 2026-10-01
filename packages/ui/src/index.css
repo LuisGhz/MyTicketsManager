@@ -8,6 +8,13 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --color-primary-50: #f0f9ff;
+  --color-primary-500: #0284c7;
+  --color-primary-600: #0369a1;
+  --color-primary-700: #075985;
+}
+
 @theme inline {
   --font-heading: var(--font-sans);
   --font-sans: "Roboto Variable", sans-serif;

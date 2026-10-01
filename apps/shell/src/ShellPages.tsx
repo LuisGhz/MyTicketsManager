@@ -108,7 +108,12 @@ export function AdminSetupPage() {
     let active = true
     apiClient.get<SetupStatus>('auth/setup-status')
       .then((status) => {
-        if (active) setAllowed(status.isSetupAllowed)
+        if (!active) return
+        if (typeof status !== 'object' || status === null || Array.isArray(status) || typeof status.isSetupAllowed !== 'boolean') {
+          setStatusError('The server returned an invalid setup status. Please try again or contact support.')
+          return
+        }
+        setAllowed(status.isSetupAllowed)
       })
       .catch((error: unknown) => {
         if (active) setStatusError(errorMessage(error))

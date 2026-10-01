@@ -1,0 +1,161 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  ADMIN
+  AGENT
+  USER
+}
+
+enum UserStatus {
+  PENDING_VERIFICATION
+  ACTIVE
+  DISABLED
+}
+
+enum TicketStatus {
+  OPEN
+  IN_PROGRESS
+  PENDING_USER_RESPONSE
+  RESOLVED
+  CLOSED
+}
+
+enum TicketPriority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+enum CloseReason {
+  RESOLVED
+  NO_RESPONSE
+  CANCELED
+  DUPLICATED
+}
+
+enum ReassignmentStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model User {
+  id                      String                @id @default(uuid())
+  email                   String                @unique
+  passwordHash            String?
+  firstName               String
+  lastName                String
+  role                    Role
+  status                  UserStatus            @default(PENDING_VERIFICATION)
+  verificationToken       String?               @unique
+  verificationTokenExpiry DateTime?
+  createdAt               DateTime              @default(now())
+  updatedAt               DateTime              @updatedAt
+
+  submittedTickets     Ticket[]              @relation("TicketReporter")
+  assignedTickets      Ticket[]              @relation("TicketAssignee")
+  comments             TicketComment[]
+  reassignmentRequests ReassignmentRequest[] @relation("RequestingAgent")
+
+  @@map("user")
+}
+
+model Department {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  tickets     Ticket[]
+
+  @@map("department")
+}
+
+model Ticket {
+  id                   String                @id @default(uuid())
+  ticketNumber         Int                   @unique @default(autoincrement())
+  title                String
+  description          String
+  status               TicketStatus          @default(OPEN)
+  priority             TicketPriority        @default(MEDIUM)
+  closeReason          CloseReason?
+  reporterId           String
+  reporter             User                  @relation("TicketReporter", fields: [reporterId], references: [id])
+  assigneeId           String?
+  assignee             User?                 @relation("TicketAssignee", fields: [assigneeId], references: [id])
+  departmentId         String
+  department           Department            @relation(fields: [departmentId], references: [id])
+  attachments          Attachment[]
+  comments             TicketComment[]
+  reassignmentRequests ReassignmentRequest[]
+  lastActivityAt       DateTime              @default(now())
+  createdAt            DateTime              @default(now())
+  updatedAt            DateTime              @updatedAt
+
+  @@index([reporterId])
+  @@index([assigneeId])
+  @@index([departmentId])
+  @@index([status])
+  @@map("ticket")
+}
+
+model Attachment {
+  id        String   @id @default(uuid())
+  filename  String
+  fileUrl   String
+  mimeType  String
+  ticketId  String
+  ticket    Ticket   @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@index([ticketId])
+  @@map("attachment")
+}
+
+model TicketComment {
+  id        String   @id @default(uuid())
+  content   String
+  ticketId  String
+  ticket    Ticket   @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  authorId  String
+  author    User     @relation(fields: [authorId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@index([ticketId])
+  @@index([authorId])
+  @@map("ticket_comment")
+}
+
+model ReassignmentRequest {
+  id            String             @id @default(uuid())
+  ticketId      String
+  ticket        Ticket             @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  requesterId   String
+  requester     User               @relation("RequestingAgent", fields: [requesterId], references: [id])
+  targetAgentId String?
+  reason        String
+  status        ReassignmentStatus @default(PENDING)
+  createdAt     DateTime           @default(now())
+  updatedAt     DateTime           @updatedAt
+
+  @@index([ticketId])
+  @@index([requesterId])
+  @@map("reassignment_request")
+}
+
+model SystemConfig {
+  key         String   @id
+  value       String
+  description String?
+  updatedAt   DateTime @updatedAt
+
+  @@map("system_config")
+}

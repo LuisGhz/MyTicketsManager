@@ -1,11 +1,5 @@
 {
-  "private": true,
-  "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev",
-    "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
-  },
+  "name": "myticketsmanager",
   "devDependencies": {
     "@typescript/native": "npm:typescript@^7.0.2",
     "eslint": "^10.9.0",
@@ -13,12 +7,18 @@
     "turbo": "^2.10.12",
     "typescript": "npm:@typescript/typescript6@^6.0.2"
   },
-  "name": "with-vite-react",
   "devEngines": {
     "packageManager": {
       "name": "bun",
       "version": "1.4.0"
     }
+  },
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "workspaces": [
     "apps/*",
